@@ -51,7 +51,9 @@ class Locast():
     " Manage connections with login info for locast.org "
     def __init__(self):
         self.logger = logging.getLogger(self.__class__.__name__)
-        self.lat, self.lon = self.set_region()
+        #self.lat, self.lon = self.set_region()
+        self.lat = 38.9885
+        self.lon = -76.791
         self.primary_dma = ''
         self.loc_name = ''
         self.user_email = ''
@@ -367,6 +369,7 @@ def play(station_id):
 
 if __name__ == '__main__':
     # 38.9885%2C-76.791
+    time.sleep(180)
     EPGGRABBER.daemon = True
     EPGGRABBER.start()
     app.run(host='0.0.0.0', port=8080, debug=True)
