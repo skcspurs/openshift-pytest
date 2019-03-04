@@ -381,7 +381,6 @@ def play(station_id):
 
 if __name__ == '__main__':
     # 38.9885%2C-76.791
-    time.sleep(180)
     EPGGRABBER.daemon = True
     EPGGRABBER.start()
     app.run(host='0.0.0.0', port=8080, debug=True)
