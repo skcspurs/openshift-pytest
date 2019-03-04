@@ -60,8 +60,8 @@ class Locast():
         self.password = ''
         self.token = ''
 
-        if not self.load_config():
-            self.logger.error('Config file not found. Exiting now.')
+        if not self.env_load_config():
+            self.logger.error('Config env variables not found. Exiting now.')
             sys.exit()
         if not self.set_city():
             self.logger.error('Could not set city. Exiting now.')
@@ -71,6 +71,18 @@ class Locast():
                 self.logger.error('Unable to login. Exiting now.')
                 sys.exit()
         self.logger.info(f"Running as {self.user_email} with token = {self.token}")
+
+
+    def env_load_config(self):
+        " Load user email, password, and token (if exists) from environment "
+        self.user_email = os.environ.get('LCST_USER_EMAIL', '')
+        self.password = os.environ.get('LCST_USER_PSWRD', '')
+        self.token = os.environ.get('LCST_TOKEN', '')
+
+        if not self.user_email:
+            return False
+
+        return True
 
 
     def load_config(self):
