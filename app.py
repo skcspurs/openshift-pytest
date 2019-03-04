@@ -34,7 +34,7 @@ import requests_cache
 import xmltv
 
 # Global Config
-requests_cache.install_cache('/locastcfg/locast', expire_after=900)
+requests_cache.install_cache('locast', expire_after=900)
 logging.basicConfig(level=logging.DEBUG)
 logging.getLogger(__name__)
 
